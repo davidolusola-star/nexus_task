@@ -454,6 +454,19 @@ input[type="checkbox"]:checked ~ .time-badge,
   .greeting-name { font-size: 1.6rem; }
   #todo-input { padding-right: 110px; font-size: .85rem; }
   #add-button { padding: 8px 16px; font-size: .78rem; }
-  .time-badge { display: none; }
+
+  /* Always show time badge on mobile */
+  .time-badge {
+    display: inline-flex;
+    opacity: 0.7;
+    font-size: .55rem;
+    padding: 3px 7px;
+  }
+
+  /* Always show edit and delete buttons on mobile */
+  .edit-button,
   .delete-button { opacity: 1; }
+
+  /* Keep edit button hidden on completed tasks */
+  .todo:has(input[type="checkbox"]:checked) .edit-button { display: none; }
 }
