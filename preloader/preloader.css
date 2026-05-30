@@ -1,0 +1,237 @@
+/* Base Preloader Container */
+.preloader {
+    min-height: 100vh;
+    position: fixed;
+    background: radial-gradient(circle, #1F3A5A, #101C2E, #0A1628, #080F1A);
+    background-size: 600% 600%;
+    animation: bgAnimation 40s ease infinite;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out, visibility 0.8s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hidden state */
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Background Animation */
+@keyframes bgAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Preloader Block - Container */
+.preloader .preloader-block {
+    backdrop-filter: blur(8px);
+    background: rgba(16, 28, 46, 0.55);
+    max-width: 320px;
+    width: 90%;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    border: 2px solid rgba(56, 189, 248, 0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Logo Container */
+.preloader .preloader-block .preloader-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Logo Image Styling */
+.preloader .preloader-block .preloader-icon img {
+    max-width: 150px;
+    border-radius: 40%;
+    width: 100%;
+    height: auto;
+    animation: logoFloat 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.7));
+}
+
+/* Logo Float Animation */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+/* Loading Text */
+.preloader .loading-text {
+    color: #E0F2FE;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Loading Spinner */
+.preloader .spinner-ring {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 5px solid rgba(56, 189, 248, 0.12);
+    border-top-color: #38BDF8;
+    border-radius: 90%;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   TABLET RESPONSIVE (768px and below)
+   ============================================ */
+@media screen and (max-width: 768px) {
+    .preloader .preloader-block {
+        max-width: 260px;
+        padding: 35px;
+        border-radius: 18px;
+    }
+
+    .preloader .preloader-block .preloader-icon img {
+        max-width: 130px;
+    }
+
+    .preloader .spinner-ring {
+        width: 160px;
+        height: 160px;
+    }
+
+    .preloader .loading-text {
+        font-size: 14px;
+    }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE (480px and below)
+   ============================================ */
+@media screen and (max-width: 480px) {
+    .preloader .preloader-block {
+        max-width: 240px;
+        padding: 30px;
+        border-radius: 16px;
+        gap: 15px;
+    }
+
+    .preloader .preloader-block .preloader-icon img {
+        max-width: 110px;
+    }
+
+    .preloader .spinner-ring {
+        width: 140px;
+        height: 140px;
+        border-width: 2px;
+    }
+
+    .preloader .loading-text {
+        font-size: 13px;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* ============================================
+   EXTRA SMALL MOBILE (360px and below)
+   ============================================ */
+@media screen and (max-width: 360px) {
+    .preloader .preloader-block {
+        max-width: 200px;
+        padding: 25px;
+        border-radius: 14px;
+    }
+
+    .preloader .preloader-block .preloader-icon img {
+        max-width: 90px;
+    }
+
+    .preloader .spinner-ring {
+        width: 120px;
+        height: 120px;
+    }
+
+    .preloader .loading-text {
+        font-size: 8px;
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP (1920px and above)
+   ============================================ */
+@media screen and (min-width: 1920px) {
+    .preloader .preloader-block {
+        max-width: 380px;
+        padding: 50px;
+        border-radius: 24px;
+    }
+
+    .preloader .preloader-block .preloader-icon img {
+        max-width: 180px;
+    }
+
+    .preloader .spinner-ring {
+        width: 220px;
+        height: 220px;
+    }
+
+    .preloader .loading-text {
+        font-size: 18px;
+    }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE (short height devices)
+   ============================================ */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .preloader .preloader-block {
+        max-width: 200px;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .preloader .preloader-block .preloader-icon img {
+        max-width: 80px;
+    }
+
+    .preloader .spinner-ring {
+        width: 100px;
+        height: 100px;
+    }
+
+    .preloader .loading-text {
+        font-size: 11px;
+    }
+}

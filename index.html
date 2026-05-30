@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Task Manager</title>
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="icons/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="preloader/preloader.css">
+</head>
+<body>
+
+  <!-- ══════════ PRELOADER ══════════ -->
+  <div class="preloader">
+    <div class="preloader-block">
+      <div class="preloader-icon">
+        <span class="spinner-ring"></span>
+        <img src="preloader/preloader.png" alt="Loading..."
+             onerror="this.style.display='none'">
+      </div>
+      <span class="loading-text">Nexus Task Manager</span>
+    </div>
+  </div>
+
+  <!-- ══════════ ONBOARDING ══════════ -->
+  <div id="onboarding">
+    <div class="onboard-card">
+      <div class="onboard-icon">👋</div>
+      <div class="onboard-title">Hey, you.</div>
+      <p class="onboard-sub">Before we dive in — what should I call you?<br>I'll remember you next time.</p>
+      <input
+        class="onboard-input"
+        id="name-input"
+        type="text"
+        placeholder="Enter your name..."
+        maxlength="32"
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <button class="onboard-btn" id="name-submit">Let's go →</button>
+    </div>
+  </div>
+
+  <!-- ══════════ CONFIRM RESET MODAL ══════════ -->
+  <div id="confirm-modal" class="hidden">
+    <div class="confirm-card">
+      <h4>Start fresh?</h4>
+      <p>This will clear your name and all tasks permanently. You'll be asked for your name again.</p>
+      <div class="confirm-actions">
+        <button id="confirm-cancel">Cancel</button>
+        <button id="confirm-ok">Yes, reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ MAIN APP ══════════ -->
+  <div id="app">
+    <header class="app-header">
+      <div class="greeting-block">
+        <div class="greeting-label">Good to see you,</div>
+        <div class="greeting-name" id="display-name">—</div>
+      </div>
+      <div class="header-meta">
+        <div class="task-count" id="task-count">0 tasks</div>
+        <button class="reset-btn" id="reset-btn">not you? reset →</button>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <div class="wrapper">
+      <form id="todo-form" onsubmit="return false">
+        <input type="text" autocomplete="off" id="todo-input" placeholder="What needs to happen?">
+        <button id="add-button" type="submit">Add Task</button>
+      </form>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="done">Done</button>
+      </div>
+
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">✦</div>
+        <p>Nothing here yet.<br>Add a task above to get started.</p>
+      </div>
+
+      <ul id="todo-list"></ul>
+    </div>
+  </div>
+
+  <script src="preloader/preloader.js" defer></script>
+  <script src="todo.js" defer></script>
+</body>
+</html>
